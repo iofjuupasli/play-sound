@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ЧГК</title>
+</head>
+<body>
+<script type="text/javascript">
+  const audio = [
+    new Audio("./мелодия/интро.mp3"),
+    new Audio("./мелодия/правильно.mp3"),
+    new Audio("./мелодия/неправильно.mp3"),
+    new Audio("./мелодия/новый раунд.mp3"),
+    new Audio("./мелодия/кнопка.mp3"),
+    new Audio("./мелодия/выбор рубрик.mp3")
+  ];
+
+  let playing = false;
+  let current = 0;
+
+  function playAudio(i) {
+    if (playing) {
+      audio[current].pause();
+      audio[current].currentTime = 0;
+      playing = false;
+
+      if (i != current) {
+        audio[i].play();
+        playing = true;
+        current = i;
+      }
+    } else {
+      audio[i].play();
+      playing = true;
+      current = i;
+    }
+
+    audio[i].addEventListener('ended', function () {
+      playing = false;
+    }, false);
+  }
+</script>
+<div>
+    <div style="height: 50vh; display: flex;">
+        <button onclick="playAudio(0)" style="height: 100%; width: 33vw;">интро</button>
+        <button onclick="playAudio(1)" style="height: 100%; width: 33vw;">правильно</button>
+        <button onclick="playAudio(2)" style="height: 100%; width: 33vw;">неправильно</button>
+    </div>
+    <div style="height: 50vh; display: flex;">
+        <button onclick="playAudio(3)" style="height: 100%; width: 33vw;">новый раунд</button>
+        <button onclick="playAudio(4)" style="height: 100%; width: 33vw;">кнопка</button>
+        <button onclick="playAudio(5)" style="height: 100%; width: 33vw;">выбор рубрик</button>
+    </div>
+</div>
+</body>
+</html>

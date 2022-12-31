@@ -1,0 +1,83 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ЧГК</title>
+</head>
+<body>
+<script type="text/javascript">
+  const audio = [
+    new Audio("./чгк/интро.mp3"),
+    new Audio("./чгк/волчок.mp3"),
+    new Audio("./чгк/черный_ящик.mp3"),
+    new Audio("./чгк/гонг.mp3"),
+    new Audio("./чгк/пре-пиик.mp3"),
+    new Audio("./чгк/пиик.mp3"),
+    new Audio("./чгк/правильный ответ.mp3"),
+    new Audio("./чгк/неправильный ответ.mp3"),
+    new Audio("./чгк/пауза.mp3"),
+    new Audio("./чгк/пауза 2.mp3"),
+    new Audio("./чгк/пауза 3.mp3"),
+    new Audio("./чгк/иииигра.mp3"),
+    new Audio("./чгк/зеро.mp3"),
+    new Audio("./чгк/сова.mp3"),
+    new Audio("./чгк/чайная пауза.mp3"),
+    new Audio("./чгк/13 сектор.mp3"),
+    new Audio("./чгк/поражение.mp3"),
+    new Audio("./чгк/победа.mp3"),
+  ];
+
+  let playing = false;
+  let current = 0;
+
+  function playAudio(i) {
+    if (playing) {
+      audio[current].pause();
+      audio[current].currentTime = 0;
+      playing = false;
+
+      if (i != current) {
+        audio[i].play();
+        playing = true;
+        current = i;
+      }
+    } else {
+      audio[i].play();
+      playing = true;
+      current = i;
+    }
+
+    audio[i].addEventListener('ended', function () {
+      playing = false;
+    }, false);
+  }
+</script>
+<div>
+    <div style="height: 25vh; display: flex;">
+        <button onclick="playAudio(0)" style="height: 100%; width: 20vw;">интро</button>
+        <button onclick="playAudio(1)" style="height: 100%; width: 20vw;">волчок</button>
+        <button onclick="playAudio(2)" style="height: 100%; width: 20vw;">черный ящик</button>
+        <button onclick="playAudio(3)" style="height: 100%; width: 20vw;">гонг</button>
+        <button onclick="playAudio(4)" style="height: 100%; width: 20vw;">пре-пиик</button>
+    </div>
+    <div style="height: 25vh; display: flex;">
+        <button onclick="playAudio(5)" style="height: 100%; width: 20vw;">пиик</button>
+        <button onclick="playAudio(6)" style="height: 100%; width: 20vw;">правильный ответ</button>
+        <button onclick="playAudio(7)" style="height: 100%; width: 20vw;">неправильный ответ</button>
+        <button onclick="playAudio(8)" style="height: 100%; width: 20vw;">пауза</button>
+        <button onclick="playAudio(9)" style="height: 100%; width: 20vw;">пауза 2</button>
+    </div>
+    <div style="height: 25vh; display: flex;">
+        <button onclick="playAudio(10)" style="height: 100%; width: 20vw;">пауза 3</button>
+        <button onclick="playAudio(11)" style="height: 100%; width: 20vw;">иииигра</button>
+        <button onclick="playAudio(12)" style="height: 100%; width: 20vw;">зеро</button>
+        <button onclick="playAudio(13)" style="height: 100%; width: 20vw;">сова</button>
+        <button onclick="playAudio(14)" style="height: 100%; width: 20vw;">чайная пауза</button>
+    </div>
+    <div style="height: 25vh; display: flex;">
+        <button onclick="playAudio(15)" style="height: 100%; width: 20vw;">13 сектор</button>
+        <button onclick="playAudio(16)" style="height: 100%; width: 20vw;">поражение</button>
+        <button onclick="playAudio(17)" style="height: 100%; width: 20vw;">победа</button>
+    </div>
+</div>
+</body>
+</html>
